@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Path Workspace Manifest",
+  "type": "object",
+  "required": ["schema_version", "workspace_id", "plan_id", "adapter", "lifecycle_state"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "workspace_id": {"type": "string", "minLength": 1},
+    "plan_id": {"type": "string", "minLength": 1},
+    "adapter": {
+      "type": "object",
+      "required": ["adapter_id", "adapter_type", "verified_at", "capabilities"],
+      "properties": {
+        "adapter_id": {"type": "string"},
+        "adapter_type": {"enum": ["workspace", "mcp", "project", "database", "filesystem", "hosted", "artifact", "inline"]},
+        "verified_at": {"type": "string"},
+        "persistent": {"type": "boolean"},
+        "capabilities": {"type": "array", "items": {"type": "string"}},
+        "missing_capabilities": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "lifecycle_state": {"enum": ["draft", "active", "paused", "under_review", "superseded", "archived", "retired"]},
+    "current_revision": {"type": ["string", "null"]},
+    "authoritative_index": {"type": ["string", "null"]},
+    "progress_source": {"type": ["string", "null"]},
+    "last_verified": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

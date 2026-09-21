@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Portfolio Runtime Analysis",
+  "type": "object",
+  "required": ["schema_version", "portfolio_id", "revision", "metrics", "uncertainty", "repair_proposals"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "portfolio_id": {"type": "string"},
+    "revision": {"type": "string"},
+    "metrics": {"type": "object", "additionalProperties": {"type": ["number", "string", "null"]}},
+    "uncertainty": {"type": "array", "items": {"type": "object"}},
+    "repair_proposals": {"type": "array", "items": {"type": "object", "required": ["issue_id", "affected_ids", "proposed_change", "reversibility", "approval_required"]}},
+    "generated_at": {"type": "string"}
+  },
+  "additionalProperties": false
+}

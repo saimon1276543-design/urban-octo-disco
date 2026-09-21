@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Path Ingestion Manifest",
+  "type": "object",
+  "required": ["manifest_id", "status", "segments", "items"],
+  "properties": {
+    "manifest_id": {"type": "string"},
+    "status": {"enum": ["collecting", "ready_for_design", "designed", "reconciled"]},
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["segment_id", "source_order", "received"],
+        "properties": {
+          "segment_id": {"type": "string"},
+          "source_order": {"type": "integer", "minimum": 1},
+          "received": {"type": "boolean"},
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["item_id", "text", "segment_id", "status"],
+        "properties": {
+          "item_id": {"type": "string"},
+          "text": {"type": "string"},
+          "segment_id": {"type": "string"},
+          "status": {"enum": ["unclassified", "goal", "topic", "artifact", "constraint", "context", "duplicate", "conflict", "mapped"]},
+          "mapped_nodes": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

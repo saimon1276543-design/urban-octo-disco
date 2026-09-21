@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Capability State Record",
+  "type": "object",
+  "required": ["schema_version", "node_id", "state", "context", "evidence_date", "confidence"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "node_id": {"type": "string", "minLength": 1},
+    "state": {"enum": ["unfamiliar", "unknown", "exposed", "guided", "practiced", "independent", "transferable", "retained", "maintained", "stale", "contradicted"]},
+    "context": {"type": "string", "minLength": 1},
+    "support_level": {"type": "string"},
+    "evidence_ids": {"type": "array", "items": {"type": "string"}},
+    "evidence_date": {"type": "string", "minLength": 1},
+    "confidence": {"enum": ["low", "medium", "high", "unknown"]},
+    "smallest_gap": {"type": ["string", "null"]},
+    "next_recheck": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

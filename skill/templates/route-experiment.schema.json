@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Route Experiment",
+  "type": "object",
+  "required": ["schema_version", "experiment_id", "hypothesis", "change", "boundary", "success_evidence", "failure_signal", "decision_state"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "experiment_id": {"type": "string", "minLength": 1},
+    "hypothesis": {"type": "string", "minLength": 1},
+    "change": {"type": "string", "minLength": 1},
+    "boundary": {"type": "string", "minLength": 1},
+    "capacity_cap": {"type": ["string", "null"]},
+    "success_evidence": {"type": "string", "minLength": 1},
+    "failure_signal": {"type": "string", "minLength": 1},
+    "stop_rule": {"type": ["string", "null"]},
+    "decision_state": {"enum": ["proposed", "running", "continue", "revise", "stop", "revert"]},
+    "observations": {"type": "array", "items": {"type": "string"}},
+    "reversal_condition": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

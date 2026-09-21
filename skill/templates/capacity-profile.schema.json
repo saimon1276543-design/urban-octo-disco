@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Capacity Profile",
+  "type": "object",
+  "required": ["schema_version", "profile_id", "parameters", "updated_from"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "profile_id": {"type": "string", "minLength": 1},
+    "parameters": {
+      "type": "object",
+      "additionalProperties": {"type": "object", "required": ["value", "basis"], "properties": {"value": {}, "basis": {"enum": ["stated", "observed", "inferred", "unknown"]}, "confidence": {"enum": ["low", "medium", "high", "unknown"]}, "notes": {"type": "string"}}, "additionalProperties": false}
+    },
+    "updated_from": {"type": "array", "items": {"type": "string"}},
+    "next_calibration": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

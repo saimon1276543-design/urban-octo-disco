@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Path Time Budget",
+  "type": "object",
+  "required": ["schema_version", "plan_id", "estimate_basis", "units"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "plan_id": {"type": "string"},
+    "estimate_basis": {"enum": ["analogous", "bottom_up", "observed_rate", "three_point", "dependency_based", "mixed", "unknown"]},
+    "confidence": {"enum": ["low", "medium", "high"]},
+    "availability": {
+      "type": "object",
+      "properties": {
+        "window_units_per_cycle": {"type": ["number", "null"], "minimum": 0},
+        "reliability": {"type": ["number", "null"], "exclusiveMinimum": 0, "maximum": 1},
+        "session_min_units": {"type": ["number", "null"], "minimum": 0},
+        "session_max_units": {"type": ["number", "null"], "minimum": 0},
+        "recovery_reserve_units": {"type": ["number", "null"], "minimum": 0},
+        "spacing_rule": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["unit_id", "node_id", "low_effort", "typical_effort", "high_effort"],
+        "properties": {
+          "unit_id": {"type": "string"},
+          "node_id": {"type": "string"},
+          "low_effort": {"type": "number", "minimum": 0},
+          "typical_effort": {"type": "number", "minimum": 0},
+          "high_effort": {"type": "number", "minimum": 0},
+          "setup_effort": {"type": "number", "minimum": 0},
+          "practice_effort": {"type": "number", "minimum": 0},
+          "feedback_wait": {"type": "number", "minimum": 0},
+          "spacing_calendar_units": {"type": "number", "minimum": 0},
+          "maintenance_effort": {"type": "number", "minimum": 0},
+          "critical_path": {"type": "boolean"},
+          "prerequisites": {"type": "array", "items": {"type": "string"}},
+          "actual_effort": {"type": ["number", "null"], "minimum": 0},
+          "variance_reason": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "next_calibration": {"type": ["string", "null"]},
+    "dominant_uncertainty": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

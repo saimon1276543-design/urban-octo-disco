@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Discoverer Review Proposal",
+  "type": "object",
+  "required": ["review_id", "checked_at", "freshness_class", "findings"],
+  "properties": {
+    "review_id": {"type": "string"},
+    "checked_at": {"type": "string"},
+    "freshness_class": {"enum": ["stable_foundation", "changing_intermediate", "fast_moving"]},
+    "findings": {"type": "array", "items": {"type": "object", "required": ["finding_id", "summary", "affected_ids", "recommendation", "status"], "properties": {"finding_id": {"type": "string"}, "summary": {"type": "string"}, "affected_ids": {"type": "array", "items": {"type": "string"}}, "importance": {"enum": ["essential", "useful", "optional", "irrelevant"]}, "recommendation": {"enum": ["add", "replace", "revise", "watch", "defer", "ignore"]}, "sources": {"type": "array", "items": {"type": "string"}}, "status": {"enum": ["pending", "accepted", "rejected", "watched"]}}, "additionalProperties": false}}
+  },
+  "additionalProperties": false
+}

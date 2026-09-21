@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Path Revision Record",
+  "type": "object",
+  "required": ["revision_id", "plan_id", "revision_type", "base_revision", "status", "stable_id_policy"],
+  "properties": {
+    "revision_id": {"type": "string"},
+    "plan_id": {"type": "string"},
+    "revision_type": {"enum": ["create", "update", "import", "split", "merge", "pause", "resume", "supersede", "archive", "retire"]},
+    "base_revision": {"type": ["string", "null"]},
+    "status": {"enum": ["draft", "verified", "failed", "rolled_back", "conflicted"]},
+    "stable_id_policy": {"enum": ["preserved", "migrated_with_mapping", "new_plan"]},
+    "changed_ids": {"type": "array", "items": {"type": "string"}},
+    "update_run_id": {"type": ["string", "null"]},
+    "research_cutoff": {"type": ["string", "null"]},
+    "impact_scope": {"type": "array", "items": {"type": "string"}},
+    "unchanged_scopes": {"type": "array", "items": {"type": "string"}},
+    "rollback_revision": {"type": ["string", "null"]},
+    "checkpoint": {"type": ["string", "null"]},
+    "verification_notes": {"type": "string"},
+    "created_at": {"type": "string"}
+  },
+  "additionalProperties": false
+}

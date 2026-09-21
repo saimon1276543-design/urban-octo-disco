@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "workspace_id": "example-learning-workspace",
+  "plan_id": "example-learning-plan",
+  "adapter": {
+    "adapter_id": "hosted-workspace",
+    "adapter_type": "hosted",
+    "verified_at": "2026-09-20T00:00:00Z",
+    "persistent": false,
+    "capabilities": ["read_plan", "write_plan", "read_progress", "update_progress", "verify_links", "checkpoint", "export_workspace"],
+    "missing_capabilities": ["cross_session_persistence", "background_scheduling", "conflict_detection", "transactions"]
+  },
+  "lifecycle_state": "active",
+  "current_revision": "rev-0001",
+  "authoritative_index": "templates/workspace-index.md",
+  "progress_source": "progress/progress.json",
+  "last_verified": "2026-09-20T00:00:00Z"
+}

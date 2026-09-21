@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Durable Domain Module",
+  "type": "object",
+  "required": ["domain_id", "name", "outcomes", "prerequisites", "volatility_class", "evidence", "safety"],
+  "properties": {
+    "domain_id": {"type": "string", "pattern": "^[A-Z0-9_-]+$"},
+    "name": {"type": "string", "minLength": 1},
+    "outcomes": {"type": "array", "items": {"type": "string"}},
+    "prerequisites": {"type": "array", "items": {"type": "string"}},
+    "durable_units": {"type": "array", "items": {"type": "string"}},
+    "volatile_overlays": {"type": "array", "items": {"type": "string"}},
+    "volatility_class": {"enum": ["durable", "medium_term", "volatile", "current_verification"]},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "safety": {"type": "array", "items": {"type": "string"}},
+    "bridges": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

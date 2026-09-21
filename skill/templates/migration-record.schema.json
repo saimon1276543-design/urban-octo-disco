@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Portfolio Migration Record",
+  "type": "object",
+  "required": ["schema_version", "migration_id", "source_version", "target_version", "status", "preserved_ids", "affected_paths", "conflicts"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "migration_id": {"type": "string", "minLength": 1},
+    "source_version": {"type": "string", "minLength": 1},
+    "target_version": {"type": "string", "minLength": 1},
+    "status": {"enum": ["preview", "ready", "committed", "quarantined", "rolled_back"]},
+    "preserved_ids": {"type": "array", "items": {"type": "string"}},
+    "affected_paths": {"type": "array", "items": {"type": "string"}},
+    "transformed_fields": {"type": "array", "items": {"type": "string"}},
+    "unresolved_links": {"type": "array", "items": {"type": "string"}},
+    "conflicts": {"type": "array", "items": {"type": "string"}},
+    "validation": {"type": "string"},
+    "rollback_reference": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Project Progression",
+  "type":"object",
+  "required":["project_id","stage","primary_domain","target_capability","artifact","limitations"],
+  "properties":{
+    "project_id":{"type":"string","minLength":1},
+    "stage":{"enum":["orientation","foundation","integration","advanced","enterprise_research","capstone_contribution"]},
+    "primary_domain":{"type":"string"},
+    "supporting_domains":{"type":"array","items":{"type":"string"}},
+    "target_capability":{"type":"string"},
+    "prerequisites":{"type":"array","items":{"type":"string"}},
+    "artifact":{"type":"string"},
+    "rubric":{"type":"array","items":{"type":"string"}},
+    "resources":{"type":"array","items":{"type":"string"}},
+    "safety_boundary":{"type":"array","items":{"type":"string"}},
+    "limitations":{"type":"array","items":{"type":"string"}},
+    "review_trigger":{"type":["string","null"]}
+  },
+  "additionalProperties":false
+}

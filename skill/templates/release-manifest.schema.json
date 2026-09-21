@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Path Architect Release Manifest",
+  "type": "object",
+  "required": ["schema_version", "skill_name", "release_id", "artifact", "workspace", "validation"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "skill_name": {"type": "string", "minLength": 1},
+    "release_id": {"type": "string", "minLength": 1},
+    "artifact": {
+      "type": "object",
+      "required": ["file_count", "total_bytes", "package_sha256"],
+      "properties": {
+        "file_count": {"type": "integer", "minimum": 1},
+        "total_bytes": {"type": "integer", "minimum": 1},
+        "package_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "zip_path": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "workspace": {
+      "type": "object",
+      "required": ["skill_sha256", "manifest_sha256", "capability_markers"],
+      "properties": {
+        "skill_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "capability_markers": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "validation": {
+      "type": "object",
+      "required": ["status", "checks"],
+      "properties": {
+        "status": {"enum": ["passed", "failed", "partial", "unverified"]},
+        "checked_at": {"type": "string"},
+        "checks": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

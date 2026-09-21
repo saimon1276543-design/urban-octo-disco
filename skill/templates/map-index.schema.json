@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Workspace Map Index",
+  "type": "object",
+  "required": ["schema_version", "maps", "links"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "maps": {"type": "array", "items": {"type": "object", "required": ["map_id", "file", "root_node_id"], "properties": {"map_id": {"type": "string"}, "file": {"type": "string"}, "root_node_id": {"type": "string"}, "purpose": {"type": "string"}, "status": {"enum": ["active", "draft", "archived"]}}, "additionalProperties": false}},
+    "links": {"type": "array", "items": {"type": "object", "required": ["source_map_id", "source_node_id", "target_map_id", "target_node_id"], "properties": {"source_map_id": {"type": "string"}, "source_node_id": {"type": "string"}, "target_map_id": {"type": "string"}, "target_node_id": {"type": "string"}, "link_type": {"type": "string"}}, "additionalProperties": false}}
+  },
+  "additionalProperties": false
+}

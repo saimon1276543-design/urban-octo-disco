@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "learning-path-architect",
+  "release_id": "20260920T223500Z",
+  "artifact": {
+    "file_count": 182,
+    "total_bytes": 646189,
+    "package_sha256": "b8fd06d2f5ef10be17a5b5e955e66fb819d8edc508e809841ac59d2f4cf29b92",
+    "zip_path": "learning-path-architect-updated.zip"
+  },
+  "workspace": {
+    "skill_sha256": "089fdc1c326e9d4f6ff62d1040155710f585ec97b96239b600b2cc317015613f",
+    "manifest_sha256": "5b4075af5aec5b27367153f0a451e1a34ffcbe4e01b9e17639d259347062dac8",
+    "capability_markers": [
+      "README.md",
+      "SKILL.md",
+      "references/domain-safety-profiles.md",
+      "references/portfolio-runtime.md",
+      "references/release-and-sync.md",
+      "scripts/analyze_portfolio_runtime.py",
+      "scripts/benchmark_outputs.py",
+      "scripts/build_release_manifest.py",
+      "scripts/migrate_portfolio.py",
+      "templates/portfolio-runtime.schema.json",
+      "templates/release-manifest.schema.json"
+    ]
+  },
+  "validation": {
+    "status": "unverified",
+    "checked_at": null,
+    "checks": []
+  }
+}

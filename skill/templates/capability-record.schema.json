@@ -1,0 +1,23 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Capability Record",
+  "type":"object",
+  "required":["capability_id","outcome","domain","target_context","proficiency_target","evidence_requirements"],
+  "properties":{
+    "capability_id":{"type":"string","minLength":1},
+    "outcome":{"type":"string","minLength":1},
+    "domain":{"type":"string","minLength":1},
+    "subdomain":{"type":["string","null"]},
+    "target_context":{"type":"string","minLength":1},
+    "conceptual_prerequisites":{"type":"array","items":{"type":"string"}},
+    "performance_prerequisites":{"type":"array","items":{"type":"string"}},
+    "proficiency_target":{"enum":["awareness","conceptual","guided","independent","debugging_optimization","systems_integration","production_research","review_leadership"]},
+    "evidence_requirements":{"type":"array","items":{"type":"string"}},
+    "evidence_state":{"enum":["unknown","exposure","guided","practiced","independent","transferable","retained","maintained","stale","contradicted"]},
+    "safety_boundary":{"type":"array","items":{"type":"string"}},
+    "volatile_overlays":{"type":"array","items":{"type":"string"}},
+    "maintenance_trigger":{"type":["string","null"]},
+    "route_state":{"enum":["primary","supporting","parallel","deferred","exploratory","retired"]}
+  },
+  "additionalProperties":false
+}

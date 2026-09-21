@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RAG Pipeline",
+  "type": "object",
+  "required": ["corpus", "ingestion", "retrieval", "evaluation"],
+  "properties": {
+    "corpus": {"type": "object", "required": ["sources", "authorization"], "properties": {"sources": {"type": "array", "items": {"type": "string"}}, "authorization": {"type": "string"}, "freshness": {"type": "string"}}, "additionalProperties": false},
+    "ingestion": {"type": "array", "items": {"type": "string"}},
+    "index_types": {"type": "array", "items": {"enum": ["lexical", "dense", "hybrid", "graph", "structured", "multimodal", "time_aware"]}},
+    "retrieval": {"type": "array", "items": {"type": "string"}},
+    "generation": {"type": "array", "items": {"type": "string"}},
+    "citations": {"type": "boolean"},
+    "evaluation": {"type": "array", "items": {"type": "string"}},
+    "deletion_policy": {"type": "string"}
+  },
+  "additionalProperties": false
+}

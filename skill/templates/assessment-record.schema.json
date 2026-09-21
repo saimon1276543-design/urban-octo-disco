@@ -1,0 +1,22 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Assessment Record",
+  "type":"object",
+  "required":["assessment_id","capability_id","task","expected_behavior","rubric"],
+  "properties":{
+    "assessment_id":{"type":"string","minLength":1},
+    "capability_id":{"type":"string","minLength":1},
+    "task":{"type":"string","minLength":1},
+    "context":{"type":"string"},
+    "expected_behavior":{"type":"array","items":{"type":"string"}},
+    "rubric":{"type":"array","items":{"type":"string"}},
+    "pass_standard":{"type":"string"},
+    "assistance_allowed":{"type":"array","items":{"type":"string"}},
+    "evidence_artifact":{"type":["string","null"]},
+    "failure_class":{"type":["string","null"]},
+    "remediation":{"type":["string","null"]},
+    "recheck_trigger":{"type":["string","null"]},
+    "safety_boundary":{"type":"array","items":{"type":"string"}}
+  },
+  "additionalProperties":false
+}

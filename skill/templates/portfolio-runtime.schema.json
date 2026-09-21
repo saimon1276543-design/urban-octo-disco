@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Portfolio Runtime Record",
+  "type": "object",
+  "required": ["schema_version", "portfolio_id", "revision", "north_star", "entities", "relationships", "policy", "safety_profiles"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "portfolio_id": {"type": "string", "minLength": 1},
+    "revision": {"type": "string", "minLength": 1},
+    "north_star": {"type": "string", "minLength": 1},
+    "entities": {"type": "object", "additionalProperties": {"type": "array"}},
+    "relationships": {"type": "array", "items": {"type": "object"}},
+    "evidence": {"type": "array", "items": {"type": "object"}},
+    "observations": {"type": "array", "items": {"type": "object"}},
+    "capacity_profile": {"type": ["object", "null"]},
+    "scenarios": {"type": "array", "items": {"type": "object"}},
+    "freshness": {"type": ["object", "null"]},
+    "policy": {"type": "object"},
+    "safety_profiles": {"type": "array", "items": {"type": "string"}},
+    "derived_metrics": {"type": "object"},
+    "derived_views": {"type": "object"}
+  },
+  "additionalProperties": false
+}

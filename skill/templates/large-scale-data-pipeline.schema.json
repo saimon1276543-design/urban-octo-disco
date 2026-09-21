@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Large-Scale Data Pipeline",
+  "type": "object",
+  "required": ["dataset", "processing_mode", "transformations", "quality", "lineage"],
+  "properties": {
+    "dataset": {"type": "object", "required": ["id", "size_class", "partitions"], "properties": {"id": {"type": "string"}, "size_class": {"type": "string"}, "partitions": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false},
+    "processing_mode": {"enum": ["batch", "streaming", "micro_batch", "incremental", "hybrid"]},
+    "transformations": {"type": "array", "items": {"type": "string"}},
+    "quality": {"type": "array", "items": {"type": "string"}},
+    "resources": {"type": "array", "items": {"type": "string"}},
+    "checkpoints": {"type": "array", "items": {"type": "string"}},
+    "lineage": {"type": "array", "items": {"type": "string"}},
+    "privacy": {"type": "array", "items": {"type": "string"}},
+    "recovery": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Path Workspace Conflict Record",
+  "type": "object",
+  "required": ["conflict_id", "workspace_id", "plan_id", "base_revision", "affected_ids", "status"],
+  "properties": {
+    "conflict_id": {"type": "string"},
+    "workspace_id": {"type": "string"},
+    "plan_id": {"type": "string"},
+    "base_revision": {"type": "string"},
+    "local_revision": {"type": ["string", "null"]},
+    "remote_revision": {"type": ["string", "null"]},
+    "affected_ids": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "merged_fields": {"type": "array", "items": {"type": "string"}},
+    "unresolved_fields": {"type": "array", "items": {"type": "string"}},
+    "risk": {"enum": ["low", "medium", "high"]},
+    "status": {"enum": ["open", "resolved", "abandoned"]},
+    "decision_needed": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Observation Tracker",
+  "type": "object",
+  "required": ["schema_version", "plan_id", "cycles"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "plan_id": {"type": "string"},
+    "cycles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["cycle_id", "planned_effort_units", "actual_effort_units", "planned_units", "completed_units", "sessions_planned", "sessions_completed", "interruptions", "recovery_units", "blockers", "branches_planned", "branches_sustained", "switching_cost_units", "evidence_quality"],
+        "properties": {
+          "cycle_id": {"type": "string"},
+          "planned_effort_units": {"type": "number", "minimum": 0},
+          "actual_effort_units": {"type": "number", "minimum": 0},
+          "planned_units": {"type": "number", "minimum": 0},
+          "completed_units": {"type": "number", "minimum": 0},
+          "sessions_planned": {"type": "integer", "minimum": 0},
+          "sessions_completed": {"type": "integer", "minimum": 0},
+          "interruptions": {"type": "integer", "minimum": 0},
+          "recovery_units": {"type": "number", "minimum": 0},
+          "blockers": {"type": "integer", "minimum": 0},
+          "repeated_blocker": {"type": "boolean"},
+          "branches_planned": {"type": "integer", "minimum": 0},
+          "branches_sustained": {"type": "integer", "minimum": 0},
+          "switching_cost_units": {"type": "number", "minimum": 0},
+          "retention_score": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+          "transfer_score": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+          "evidence_quality": {"enum": ["unknown", "self_report", "artifact", "automated", "mentor_confirmed", "stale", "conflicted"]},
+          "variance_reason": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "review": {
+      "type": "object",
+      "properties": {
+        "trigger": {"type": "string"},
+        "smallest_failing_assumption": {"type": ["string", "null"]},
+        "decision": {"enum": ["continue", "advance", "remediate", "maintain", "narrow", "defer", "replace", "retire", "split", "pause"]},
+        "next_primary_action": {"type": ["string", "null"]},
+        "next_review_trigger": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

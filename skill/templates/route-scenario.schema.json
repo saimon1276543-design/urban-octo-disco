@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Route Scenario",
+  "type":"object",
+  "required":["scenario_id","route_type","target_capability","included_nodes","smallest_next_action"],
+  "properties":{
+    "scenario_id":{"type":"string"},
+    "route_type":{"enum":["minimum_viable","research","production_engineering","enterprise_systems","medical_clinical_foundation","project_first","maximum_depth"]},
+    "target_capability":{"type":"string"},
+    "included_nodes":{"type":"array","items":{"type":"string"}},
+    "deferred_nodes":{"type":"array","items":{"type":"string"}},
+    "omission_rationale":{"type":"array","items":{"type":"string"}},
+    "critical_path":{"type":"array","items":{"type":"string"}},
+    "parallel_branches":{"type":"array","items":{"type":"string"}},
+    "assumptions":{"type":"array","items":{"type":"string"}},
+    "tradeoffs":{"type":"array","items":{"type":"string"}},
+    "reversibility":{"type":"string"},
+    "smallest_next_action":{"type":"string"}
+  },
+  "additionalProperties":false
+}

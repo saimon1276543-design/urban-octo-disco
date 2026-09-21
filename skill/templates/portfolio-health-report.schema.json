@@ -1,0 +1,12 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Portfolio Health Report",
+  "type":"object",
+  "required":["report_id","findings"],
+  "properties":{
+    "report_id":{"type":"string"},
+    "observed_revision":{"type":["string","null"]},
+    "findings":{"type":"array","items":{"type":"object","required":["finding_id","severity","signal","affected_ids","confidence"],"properties":{"finding_id":{"type":"string"},"severity":{"enum":["blocker","high","medium","low","informational"]},"signal":{"type":"string"},"affected_ids":{"type":"array","items":{"type":"string"}},"likely_cause":{"type":["string","null"]},"confidence":{"enum":["low","medium","high","unknown"]},"repair_proposal":{"type":["string","null"]},"evidence_needed":{"type":"array","items":{"type":"string"}},"next_review_trigger":{"type":["string","null"]}},"additionalProperties":false}}
+  },
+  "additionalProperties":false
+}

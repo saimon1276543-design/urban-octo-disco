@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Path Multi-Domain Portfolio",
+  "type": "object",
+  "required": ["schema_version", "portfolio_id", "north_star", "domains", "shared_foundations", "bridges", "active_frontier"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "portfolio_id": {"type": "string"},
+    "north_star": {"type": "string"},
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["domain_id", "name", "outcome", "target_level", "route_state"],
+        "properties": {
+          "domain_id": {"type": "string"},
+          "name": {"type": "string"},
+          "outcome": {"type": "string"},
+          "target_level": {"type": "string"},
+          "entry_evidence": {"type": ["string", "null"]},
+          "route_state": {"enum": ["primary", "supporting", "parallel", "sequenced", "deferred", "exploratory", "retired"]},
+          "volatility": {"enum": ["durable", "medium_term", "volatile", "unknown"]},
+          "safety_boundary": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "shared_foundations": {"type": "array", "items": {"type": "string"}},
+    "bridges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["bridge_id", "name", "domains", "outcome"],
+        "properties": {
+          "bridge_id": {"type": "string"},
+          "name": {"type": "string"},
+          "domains": {"type": "array", "minItems": 2, "items": {"type": "string"}},
+          "outcome": {"type": "string"},
+          "evidence": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "active_frontier": {"type": "array", "items": {"type": "string"}},
+    "parallel_limit": {"type": ["integer", "null"], "minimum": 1}
+    ,"graph_ref": {"type": ["string", "null"]}
+    ,"health_signals": {"type": "array", "items": {"type": "string"}}
+    ,"complexity_budget_ref": {"type": ["string", "null"]}
+    ,"closure_status": {"enum": ["open", "partial", "closed", "blocked", "unknown"]}
+  },
+  "additionalProperties": false
+}

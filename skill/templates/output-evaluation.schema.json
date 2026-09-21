@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Path Output Evaluation Record",
+  "type": "object",
+  "required": ["schema_version", "case_id", "evaluation_mode", "result", "dimensions"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "case_id": {"type": "string", "minLength": 1},
+    "evaluation_mode": {"enum": ["structural", "qualitative", "mixed"]},
+    "result": {"enum": ["pass", "revise", "blocked", "unavailable"]},
+    "dimensions": {"type": "object", "additionalProperties": {"enum": [0, 1, 2, "unavailable"]}},
+    "blocking_failures": {"type": "array", "items": {"type": "string"}},
+    "evidence_notes": {"type": "array", "items": {"type": "string"}},
+    "evaluator_version": {"type": "string"},
+    "uncertainty": {"type": "string"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Map Export",
+  "type": "object",
+  "required": ["meta", "nodes"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outcomes"],
+      "properties": {
+        "outcomes": {"type": "array", "items": {"type": "string"}},
+        "current_proficiency": {"type": ["string", "object"]},
+        "target_proficiency": {"type": ["string", "object"]},
+        "strategy": {"enum": ["orientation", "competency", "project-first"]},
+        "route": {"type": "string"},
+        "assumptions": {"type": "array", "items": {"type": "string"}},
+        "freshness_boundary": {"type": ["string", "null"]},
+        "research_context": {"type": ["string", "null"]},
+        "sources": {"type": "array", "items": {"type": "string"}},
+        "uncertainty": {"type": "array", "items": {"type": "string"}},
+        "recheck_trigger": {"type": ["string", "null"]}
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/node"}
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["from", "to", "relation"],
+        "properties": {
+          "from": {"type": "string"},
+          "to": {"type": "string"},
+          "relation": {"enum": ["prerequisite", "reinforce-after", "parallel", "alternative", "supports"]}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": ["id", "title", "type", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^[0-9]+(\\.[0-9]+)*$"},
+        "title": {"type": "string", "minLength": 1},
+        "type": {"enum": ["branch", "leaf", "milestone", "capstone", "diagnostic"]},
+        "status": {"enum": ["Core", "Required", "Recommended", "Optional", "Alternative", "Parallel", "Application/milestone"]},
+        "objective": {"type": ["string", "null"]},
+        "verb": {"type": ["string", "null"]},
+        "prerequisites": {"type": "array", "items": {"type": "string"}},
+        "target_proficiency": {"type": ["string", "null"]},
+        "performance_context": {"type": ["string", "null"]},
+        "evidence": {"type": ["string", "null"]},
+        "performance_support": {"type": ["string", "null"]},
+        "confidence": {"enum": ["high", "medium", "low", null]},
+        "source_refs": {"type": "array", "items": {"type": "string"}},
+        "effort": {"enum": ["XS", "S", "M", "L", null]},
+        "notes": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Portfolio Policy and Safety Profile",
+  "type": "object",
+  "required": ["schema_version", "policy_id", "progression_posture", "concurrency_mode", "route_style", "safety_domains"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "policy_id": {"type": "string"},
+    "progression_posture": {"enum": ["conservative", "balanced", "aggressive"]},
+    "concurrency_mode": {"enum": ["single_track", "bounded_parallel", "exploratory"]},
+    "route_style": {"enum": ["theory_first", "project_first", "mixed"]},
+    "objective_emphasis": {"type": "string"},
+    "maintenance_tolerance": {"type": "string"},
+    "max_weekly_context_switches": {"type": ["integer", "null"], "minimum": 0},
+    "acceptable_uncertainty": {"type": "string"},
+    "safety_domains": {"type": "array", "items": {"type": "object", "required": ["domain", "self_study_boundary", "authorization_required"], "properties": {"domain": {"type": "string"}, "self_study_boundary": {"type": "string"}, "authorization_required": {"type": "boolean"}, "supervision": {"type": "string"}}, "additionalProperties": false}}
+  },
+  "additionalProperties": false
+}

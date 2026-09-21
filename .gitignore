@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+LearningWorkspace/
+.sync/
+checkpoints/
+revisions/
+conflicts.json
+workspace.json
+*.log

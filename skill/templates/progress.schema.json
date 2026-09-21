@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Path Progress",
+  "type": "object",
+  "required": ["schema_version", "plan_id", "nodes"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "plan_id": {"type": "string"},
+    "north_star": {"type": "string"},
+    "last_reviewed": {"type": ["string", "null"]},
+    "lifecycle_state": {"enum": ["draft", "active", "paused", "under_review", "superseded", "archived", "retired"]},
+    "capacity": {
+      "type": "object",
+      "properties": {
+        "available_effort_band": {"enum": ["unknown", "small", "medium", "large", "very-large"]},
+        "parallel_branch_limit": {"type": ["integer", "null"], "minimum": 1},
+        "confidence": {"enum": ["unknown", "low", "medium", "high"]},
+        "observed_notes": {"type": "string"},
+        "nominal_units": {"type": ["number", "null"], "minimum": 0},
+        "reliability": {"type": ["number", "null"], "exclusiveMinimum": 0, "maximum": 1},
+        "learning_fraction": {"type": ["number", "null"], "exclusiveMinimum": 0, "maximum": 1},
+        "fixed_overhead_units": {"type": ["number", "null"], "minimum": 0},
+        "maintenance_units": {"type": ["number", "null"], "minimum": 0},
+        "recovery_reserve_units": {"type": ["number", "null"], "minimum": 0},
+        "observed_throughput_ratio": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "last_calibrated": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "learner_state": {
+      "type": "object",
+      "properties": {
+        "last_diagnostic": {"type": ["string", "null"]},
+        "confidence": {"enum": ["unknown", "low", "medium", "high"]},
+        "evidence_source": {"enum": ["stated", "observed", "artifact", "automated", "mentor_confirmed", "unknown"]},
+        "support_level": {"enum": ["guided", "familiar_independent", "bounded_unfamiliar", "ambiguous_open_ended", "unknown"]},
+        "error_patterns": {"type": "array", "items": {"type": "string"}},
+        "next_diagnostic": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "interventions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["intervention_id", "node_id", "failure_class", "action", "recheck_trigger", "status"],
+        "properties": {
+          "intervention_id": {"type": "string"},
+          "node_id": {"type": "string"},
+          "failure_class": {"enum": ["route", "prerequisite", "concept", "procedure", "transfer", "retrieval", "environment", "overload", "evidence", "one_off_shock"]},
+          "action": {"type": "string"},
+          "expected_signal": {"type": ["string", "null"]},
+          "recheck_trigger": {"type": "string"},
+          "status": {"enum": ["proposed", "active", "effective", "ineffective", "replaced"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "learner_history": {
+      "type": "object",
+      "properties": {
+        "recurring_error_patterns": {"type": "array", "items": {"type": "string"}},
+        "effective_interventions": {"type": "array", "items": {"type": "string"}},
+        "abandoned_methods": {"type": "array", "items": {"type": "string"}},
+        "last_updated": {"type": ["string", "null"]},
+        "confidence": {"enum": ["unknown", "low", "medium", "high"]}
+      },
+      "additionalProperties": false
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["node_id", "status"],
+        "properties": {
+          "node_id": {"type": "string"},
+          "status": {"enum": ["locked", "available", "active", "blocked", "complete", "maintain", "deferred", "retired"]},
+          "evidence_link": {"type": ["string", "null"]},
+          "evidence_source": {"enum": ["unknown", "self_report", "uploaded_artifact", "verified_file", "automated_test", "mentor_confirmation"]},
+          "evidence_verified": {"type": "boolean"},
+          "evidence_last_verified": {"type": ["string", "null"]},
+          "last_attempt": {"type": ["string", "null"]},
+          "confidence": {"enum": ["unknown", "low", "medium", "high"]},
+          "blocker": {"type": ["string", "null"]},
+          "observed_effort": {"type": ["string", "null"]},
+          "planned_effort_units": {"type": ["number", "null"], "minimum": 0},
+          "actual_effort_units": {"type": ["number", "null"], "minimum": 0},
+          "estimate_basis": {"enum": ["unknown", "analogous", "bottom_up", "observed_rate", "three_point", "dependency_based", "mixed"]},
+          "variance_reason": {"type": ["string", "null"]},
+          "next_action": {"type": ["string", "null"]},
+          "review_trigger": {"type": ["string", "null"]},
+          "review_state": {"enum": ["not_due", "due", "stale", "conflicted"]}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
