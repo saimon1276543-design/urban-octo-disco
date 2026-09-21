@@ -6,18 +6,27 @@ import sys
 from pathlib import Path
 
 from .engine import Workspace
-from .model import save_json
+from .model import load_json, save_json
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(prog="freeplane-sync")
-    parser.add_argument("command", choices=["init", "import", "export", "sync", "undo", "redo", "status"])
+    parser.add_argument("command", choices=["init", "import", "export", "sync", "undo", "redo", "backup", "revisions", "conflicts", "status"])
     parser.add_argument("--workspace", default=".")
     args = parser.parse_args()
     ws = Workspace(Path(args.workspace).resolve())
     ws.init()
     if args.command == "init":
         print(json.dumps({"status": "initialized", "workspace": str(ws.root)}, indent=2))
+        return 0
+    if args.command == "backup":
+        print(json.dumps({"status": "checkpoint-created", "path": str(ws.checkpoint("manual"))}, indent=2))
+        return 0
+    if args.command == "revisions":
+        print(json.dumps({"revisions": load_json(ws.history_file, [])}, indent=2))
+        return 0
+    if args.command == "conflicts":
+        print(json.dumps({"conflicts": load_json(ws.conflicts_file, [])}, indent=2))
         return 0
     if args.command == "import":
         result = ws.import_maps()

@@ -1,82 +1,199 @@
-# Freeplane Learning Workspace Bridge
+# Freeplane Learning Workspace
 
-This repository adds a small, local, no-code-oriented bridge for a Freeplane learning workspace. Freeplane remains the visual editor. The bridge mirrors Freeplane `.mm` maps into structured JSON, creates checkpoints, detects concurrent edits, and exposes a localhost MCP-style HTTP endpoint for an LLM client.
+This project helps keep a Freeplane mind map and the learning records used by the `learning-path-architect` skill together.
 
-## Current status
+You do **not** need to understand the source code. You use Freeplane normally. The helper files quietly make backups and keep a saved copy of the learning information.
 
-This is the first verified foundation. It supports:
+## The simple picture
 
-- Freeplane XML map parsing and generation
-- Stable node IDs and hierarchy round trips
-- Notes and basic node metadata
-- Map-to-workspace and workspace-to-map synchronization
-- Atomic JSON writes
-- Checkpoints before synchronization and restore
-- Conflict records when both sides changed since the last sync
-- Saved-state undo/redo using revision folders
-- A localhost-only MCP-style endpoint with read/status, sync, and checkpoint tools
-- The updated `learning-path-architect` package under `skill/`
-
-Native Freeplane in-session undo/redo remains owned by Freeplane. The bridge deliberately does not rewrite the open map during ordinary editing. Saved-state history is separate and retains recoverable revisions; the bridge keeps the latest ten redo entries and all created checkpoint folders until cleanup.
-
-## Quick start on Windows
-
-Install Python 3.11+ and Freeplane first. In PowerShell:
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m freeplane_sync.cli init --workspace C:\LearningWorkspace
+```text
+You edit your map in Freeplane
+              ↓
+The helper saves a matching learning record
+              ↓
+An LLM can read or update the saved record
+              ↓
+The helper can update the Freeplane map
 ```
 
-Copy or create Freeplane maps under `C:\LearningWorkspace\maps`, then import them:
+Freeplane is still the mind-map application. This project is only the connecting helper.
 
-```powershell
-python -m freeplane_sync.cli import --workspace C:\LearningWorkspace
+## What is already included
+
+- Freeplane map reading and writing.
+- Parent, child, and branch movement support.
+- Node names and notes.
+- Basic workspace-to-map and map-to-workspace updates.
+- Backups before important changes.
+- Conflict detection when both sides changed the same saved work.
+- Saved versions with undo and redo.
+- The latest ten saved versions are retained for saved-state recovery.
+- A local, password-protected LLM connection point.
+- Windows double-click setup files.
+- The updated learning-path-architect skill package.
+
+## Quick setup on Windows
+
+Install **Freeplane** and **Python 3.10 or newer** first.
+
+Then download this repository and double-click:
+
+```text
+setup.bat
 ```
 
-After an LLM-side workspace change, export it back to Freeplane:
+The setup creates your workspace here:
 
-```powershell
-python -m freeplane_sync.cli export --workspace C:\LearningWorkspace
+```text
+C:\Users\YOUR-NAME\LearningWorkspace
 ```
 
-Watch for map changes:
+Put your Freeplane `.mm` files inside:
 
-```powershell
-python -m freeplane_sync.watch --workspace C:\LearningWorkspace
+```text
+C:\Users\YOUR-NAME\LearningWorkspace\maps
 ```
 
-Create a local MCP endpoint:
+Then double-click:
 
-```powershell
-python -m freeplane_sync.mcp_server --workspace C:\LearningWorkspace --token CHANGE-ME
+```text
+start-sync.bat
 ```
 
-The endpoint is deliberately bound to `127.0.0.1`, not the public network:
+Leave that window open while you work. It watches for saved changes.
+
+## What you normally do
+
+1. Open your map in Freeplane.
+2. Edit it as usual.
+3. Save it in Freeplane.
+4. Leave the synchronization window running.
+5. The helper creates or updates the matching saved learning record.
+
+You do not need to edit `workspace.json` yourself.
+
+## If an LLM needs access
+
+Start the local connection point with:
+
+```powershell
+python -m freeplane_sync.mcp_server --workspace C:\Users\YOUR-NAME\LearningWorkspace --token CHANGE-ME
+```
+
+It listens only on your own computer:
 
 ```text
 http://127.0.0.1:6299/mcp
-Authorization: Bearer CHANGE-ME
 ```
 
-## Revision controls
+The token is like a password. Keep it private. Do not put it in GitHub or send it to other people.
+
+The LLM connection can be given reading access first. Only enable writing after you are comfortable with the backup and conflict behavior.
+
+## Simple commands
+
+If you prefer commands instead of double-clicking files, open PowerShell in this project folder.
+
+Create the workspace:
 
 ```powershell
-python -m freeplane_sync.cli undo --workspace C:\LearningWorkspace
-python -m freeplane_sync.cli redo --workspace C:\LearningWorkspace
+python -m freeplane_sync.cli init --workspace C:\Users\YOUR-NAME\LearningWorkspace
 ```
 
-Restores are checkpointed first, so the current state is not discarded silently.
+Import saved Freeplane maps into the learning workspace:
 
-## Hosted mode
+```powershell
+python -m freeplane_sync.cli import --workspace C:\Users\YOUR-NAME\LearningWorkspace
+```
 
-The hosted LLM environment can generate and revise `workspace.json` and `.mm` files, then export the entire folder as a ZIP. It cannot live-sync with Freeplane until the local bridge is running on the user’s computer. This limitation is intentional and is recorded in the workspace design.
+Send workspace changes back into Freeplane maps:
 
-## Limitations of this first release
+```powershell
+python -m freeplane_sync.cli export --workspace C:\Users\YOUR-NAME\LearningWorkspace
+```
 
-- It is not yet a full native MCP SDK implementation; it provides a small authenticated JSON-RPC HTTP bridge for the initial local workflow.
-- Freeplane visual-only details such as complex styles, floating positions, and connector styling require a later preservation layer.
-- Changes should be synchronized after saving a map; the watcher is near-real-time, not a collaborative editor.
-- Conflicts are recorded and stop automatic synchronization rather than being silently merged.
-- The repository does not store model/API keys.
+Create a manual backup:
+
+```powershell
+python -m freeplane_sync.cli backup --workspace C:\Users\YOUR-NAME\LearningWorkspace
+```
+
+See saved versions:
+
+```powershell
+python -m freeplane_sync.cli revisions --workspace C:\Users\YOUR-NAME\LearningWorkspace
+```
+
+Restore the previous saved version:
+
+```powershell
+python -m freeplane_sync.cli undo --workspace C:\Users\YOUR-NAME\LearningWorkspace
+```
+
+Redo the last restoration:
+
+```powershell
+python -m freeplane_sync.cli redo --workspace C:\Users\YOUR-NAME\LearningWorkspace
+```
+
+See conflicts:
+
+```powershell
+python -m freeplane_sync.cli conflicts --workspace C:\Users\YOUR-NAME\LearningWorkspace
+```
+
+## What happens if both sides changed
+
+The helper will not silently choose a version. It records a conflict and stops the automatic update.
+
+For example:
+
+```text
+The same node was changed in Freeplane and by the LLM.
+Please choose which version to keep.
+```
+
+Keep a backup before resolving the conflict. The current first version reports conflicts in a file; a later version will provide a more visual conflict-review screen.
+
+## Undo and redo
+
+There are two kinds of undo:
+
+### Normal editing in Freeplane
+
+Freeplane controls its own normal Undo and Redo buttons. The helper does not replace those controls.
+
+### Saved-workspace recovery
+
+The helper keeps saved snapshots separately. It can restore the previous saved state and redo that restoration. It keeps at least the latest ten saved workflow versions.
+
+This means the helper does not promise to recreate Freeplane’s native unsaved undo history after Freeplane has been closed. Freeplane’s own undo system and the helper’s saved backups are two separate safety nets.
+
+## Hosted LLM use
+
+A hosted LLM can create or revise a downloadable workspace and Freeplane maps. That hosted environment should be treated as a temporary workshop unless it explicitly confirms that it has permanent storage.
+
+When you move to your own computer, download the complete workspace ZIP and keep it as a backup. Live synchronization with Freeplane happens only when the local helper is running on your computer.
+
+## Skill package
+
+The `skill/` folder contains the learning-path-architect skill. Its main file is:
+
+```text
+skill/SKILL.md
+```
+
+The host’s Add/Update card is generated only when the active skill is delivered from its recognized skill path. A GitHub repository or ZIP file is a backup and transport method; it is not automatic installation.
+
+## What is not finished yet
+
+This is a working foundation, not a polished commercial product. Future improvements include:
+
+- Better preservation of advanced Freeplane styling and connector appearance.
+- A full standard MCP implementation tested with a real LLM client.
+- A visual conflict-resolution screen.
+- A polished one-click installer.
+- More tests using real complex Freeplane maps.
+- A guided import/export wizard.
+
+Until those improvements are complete, keep regular backups of the whole `LearningWorkspace` folder.
