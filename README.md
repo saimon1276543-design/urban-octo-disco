@@ -197,3 +197,19 @@ This is a working foundation, not a polished commercial product. Future improvem
 - A guided import/export wizard.
 
 Until those improvements are complete, keep regular backups of the whole `LearningWorkspace` folder.
+
+
+## Latest learning-path-architect improvements
+
+The skill now deliberately starts with the learner’s immediate decision instead of showing its internal technical structure first. For ordinary questions it should provide a plain-language answer, one practical next action, the reason that action comes first, observable evidence of progress, a small recovery step if the learner gets stuck, and a review trigger.
+
+It also now has a final quality check for coverage, prerequisites, evidence, adaptation, safety, uncertainty, and unnecessary complexity. The full portfolio architecture remains available for large requests, but it should not overwhelm a simple question.
+
+The new guidance is stored in:
+
+```text
+skill/references/plain-language-response-contract.md
+skill/references/plan-quality-check.md
+```
+
+The skill’s main file explicitly routes beginner and Freeplane questions to these references. The repository includes a regression test so the main skill remains below the host’s 500-line progressive-disclosure limit and continues to point to the required references.

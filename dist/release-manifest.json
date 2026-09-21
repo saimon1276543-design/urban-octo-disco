@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0",
   "skill_name": "learning-path-architect",
-  "release_id": "20260921-freeplane-bridge",
+  "release_id": "20260921-plain-language",
   "artifact": {
-    "file_count": 182,
-    "total_bytes": 650070,
-    "package_sha256": "5089a4536bc968e60f7fff6bdf0da22cc92ddd91f35a3d206f49de31920ae64a",
+    "file_count": 184,
+    "total_bytes": 658058,
+    "package_sha256": "a13bd66fdd6d36b48d2a331eb6968d061d37e2dd86ca4a0cd6fed8b0d3d9e628",
     "zip_path": "/home/ubuntu/urban-octo-disco/dist/learning-path-architect-with-freeplane-bridge.zip"
   },
   "workspace": {
-    "skill_sha256": "aae0ce32ec5f1679074ebf72087ca172669f1c6fae927bd03a3989aa6607378f",
+    "skill_sha256": "8ecfd4a4823d83add675838ef5c0b7e8259c28d48acf21cbb1bc9531b83d420e",
     "manifest_sha256": "5b4075af5aec5b27367153f0a451e1a34ffcbe4e01b9e17639d259347062dac8",
     "capability_markers": [
       "README.md",
