@@ -7,6 +7,12 @@ from pathlib import Path
 from .engine import Workspace
 
 
+def _signature(ws: Workspace) -> tuple:
+    maps = tuple((p.name, p.stat().st_mtime_ns, p.stat().st_size) for p in ws.map_paths())
+    workspace = ws.workspace_file.stat().st_mtime_ns if ws.workspace_file.exists() else 0
+    return maps, workspace
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--workspace", default=".")
@@ -18,12 +24,15 @@ def main() -> None:
     last = None
     try:
         while True:
-            signature = tuple((p.name, p.stat().st_mtime_ns, p.stat().st_size) for p in ws.map_paths())
-            if signature != last:
-                result = ws.import_maps()
+            current = _signature(ws)
+            if current != last:
+                if last is None or current[0] != last[0]:
+                    result = ws.import_maps()
+                else:
+                    result = ws.export_maps()
                 if result.status in {"synced", "conflict"}:
                     print(result)
-                last = signature
+                last = current
             time.sleep(args.interval)
     except KeyboardInterrupt:
         print("Stopped")
