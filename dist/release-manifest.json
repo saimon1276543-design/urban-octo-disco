@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0",
   "skill_name": "learning-path-architect",
-  "release_id": "20260928-hosted-time-planning",
+  "release_id": "20260928-diagnostic-first",
   "artifact": {
-    "file_count": 195,
-    "total_bytes": 684460,
-    "package_sha256": "d568b1e4964f62bd051132a03eec4c4260a52db39f4b13a2d01927c366d3dc44",
+    "file_count": 197,
+    "total_bytes": 689155,
+    "package_sha256": "e875f8bf78f009974b6f6bb7b39c874260ad49609ddc111870a0f8b37216d23c",
     "zip_path": "/home/ubuntu/urban-octo-disco/dist/learning-path-architect-with-freeplane-bridge.zip"
   },
   "workspace": {
-    "skill_sha256": "960cdf398f0c82cb36517544145a0501c8d800b4cad7bca09d193b8d0b295e87",
+    "skill_sha256": "92d05f71385d98de65628daafd5beaf7473a7bd1f3707c27cef0ca021d398892",
     "manifest_sha256": "5b4075af5aec5b27367153f0a451e1a34ffcbe4e01b9e17639d259347062dac8",
     "capability_markers": [
       "README.md",

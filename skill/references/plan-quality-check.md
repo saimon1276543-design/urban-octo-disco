@@ -31,6 +31,9 @@ Use this checklist before delivering a roadmap, syllabus, portfolio, or revision
 - If the learner is stuck, diagnose the smallest likely gap before adding content.
 - Use a bounded correction with an observable improvement signal.
 - Include maintenance or revalidation when the capability can decay or the knowledge can change.
+- Use a representative pilot when current level, effort, or route fit is uncertain.
+- Preserve the original assumption and the reason for every material route change.
+- After a missed task, preserve completed work and choose resume, reduce, split, reschedule, or deliberate pause rather than automatic backfilling.
 
 ## Honesty and safety
 

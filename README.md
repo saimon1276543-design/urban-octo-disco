@@ -272,3 +272,8 @@ The skill now has a clear hosted-session boundary. It can design assignments, in
 Time estimates now separate focused effort, practical session length, full learning cycle, calendar range, and deadline feasibility. Non-trivial estimates use low/typical/high ranges, explicit capacity assumptions, uncertainty, recovery reserve, and a calibration task. A time estimate is a planning range, not a promise of mastery.
 
 New portable templates are available under `skill/templates/` for hosted capstones, time plans, and progress views.
+
+
+## Diagnostic-first improvement
+
+The skill now diagnoses before expanding a learning route. When a learner is stuck, late, or submits weak evidence, it should use a small representative pilot to distinguish a prerequisite gap, practice gap, feedback problem, scope problem, time-estimation error, transfer problem, or retention problem. It then chooses the smallest intervention and preserves the reason for any route change in a portable decision record.
