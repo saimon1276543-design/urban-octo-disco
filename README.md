@@ -198,6 +198,12 @@ This is a working foundation, not a polished commercial product. Future improvem
 
 Until those improvements are complete, keep regular backups of the whole `LearningWorkspace` folder.
 
+## Future offline implementation checklist
+
+The detailed future work is documented separately in [`OFFLINE_IMPLEMENTATION_TODO.md`](OFFLINE_IMPLEMENTATION_TODO.md). It covers the local database, evidence intake, deterministic checks, bounded LLM evaluation, mistake memory, review scheduling, parallel evaluation, roadmap proposals, Freeplane add-on, side panel, time tracking, security, recovery, and acceptance tests.
+
+The workflow diagram is available as the editable Mermaid source [`OFFLINE_IMPLEMENTATION_WORKFLOW.mmd`](OFFLINE_IMPLEMENTATION_WORKFLOW.mmd) and as [`OFFLINE_IMPLEMENTATION_WORKFLOW.png`](OFFLINE_IMPLEMENTATION_WORKFLOW.png).
+
 
 ## Latest learning-path-architect improvements
 

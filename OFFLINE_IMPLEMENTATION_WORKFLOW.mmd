@@ -1,0 +1,96 @@
+flowchart TD
+    A[You choose a learning goal or Freeplane node] --> B{Hosted or local?}
+    B -->|Hosted session| C[Skill classifies the request]
+    B -->|Local system| D[Local bridge checks permissions]
+
+    C --> C1[Explain]
+    C --> C2[Plan route]
+    C --> C3[Assign capstone]
+    C --> C4[Request evidence]
+    C --> C5[Review supplied evidence]
+    C --> C6[Create portable record]
+
+    C3 --> E[Assignment record]
+    C4 --> E
+    E --> E1[Goal and capabilities]
+    E --> E2[Deliverables]
+    E --> E3[Evidence checklist]
+    E --> E4[Rubric and scope limits]
+    E --> E5[Submission and revision rule]
+    E --> E6[Review interval and time estimate]
+
+    D --> F[Local workspace]
+    F --> F1[SQLite records]
+    F --> F2[Maps and detail maps]
+    F --> F3[Assignments]
+    F --> F4[Submissions]
+    F --> F5[Evaluations]
+    F --> F6[Mistake memory]
+    F --> F7[Review events]
+    F --> F8[Backups and revisions]
+
+    E --> G[Authorized submission folder]
+    G --> H[Freeze submission snapshot]
+    H --> I[Inventory files and calculate hashes]
+    I --> J{Deterministic checks}
+    J --> J1[Manifest and required-file checks]
+    J --> J2[Freeplane XML and link checks]
+    J --> J3[Schema, syntax, and test checks]
+    J --> J4[Optional sandboxed project checks]
+
+    J1 --> K[Evidence coverage report]
+    J2 --> K
+    J3 --> K
+    J4 --> K
+    K --> L{Need interpretation?}
+    L -->|No| M[Record objective result]
+    L -->|Yes| N[Bounded LLM evaluator]
+
+    N --> N1[Read only selected evidence]
+    N1 --> N2[Apply rubric]
+    N2 --> N3[Return findings with evidence references]
+    N3 --> N4[Mark unknowns and uncertainty]
+    N4 --> M[Structured evaluation result]
+
+    M --> O{Repeated mistake or missing capability?}
+    O -->|No| P[Update evidence state]
+    O -->|Yes| Q[Create mistake-memory record]
+    Q --> R[Create smallest corrective review task]
+    R --> S[Schedule review using available time]
+    S --> T{Time available now?}
+    T -->|Short| T1[Choose quick recall or corrective task]
+    T -->|Enough| T2[Choose full review or transfer task]
+    T -->|None| T3[Keep visibly pending; do not delete]
+
+    P --> U[Create progress proposal]
+    T1 --> U
+    T2 --> U
+    T3 --> U
+    U --> U1[Preserve authoritative dependency map]
+    U --> U2[Update separate progress view]
+    U --> U3[Link evidence, mistake, and review]
+    U --> V{Mutation permission granted?}
+    V -->|No| W[Save proposal for review]
+    V -->|Yes| X[Create backup and apply reversible update]
+
+    X --> Y[Freeplane integration]
+    Y --> Y1[Show selected node context]
+    Y --> Y2[Open linked detail map]
+    Y --> Y3[Show evidence and pending review]
+    Y --> Y4[Offer side-panel actions]
+
+    W --> Z[Export portable Markdown, JSON, or ZIP]
+    Y --> Z
+    Z --> AA[Future session or offline recovery]
+    AA --> AB[Recalculate time from actual effort]
+    AB --> AC[Recalibrate remaining route]
+    AC --> C
+
+    classDef hosted fill:#e8f1ff,stroke:#356ae6,color:#102a56;
+    classDef local fill:#eaf8ef,stroke:#2d8a4e,color:#123d22;
+    classDef evidence fill:#fff4df,stroke:#c98200,color:#4a2c00;
+    classDef review fill:#f4eaff,stroke:#8651b5,color:#32164d;
+    class C,C1,C2,C3,C4,C5,C6,E,E1,E2,E3,E4,E5,E6 hosted;
+    class D,F,F1,F2,F3,F4,F5,F6,F7,F8,G,H,I,J,J1,J2,J3,J4 local;
+    class K,L,M,N,N1,N2,N3,N4,O,P,Q evidence;
+    class R,S,T,T1,T2,T3,U,U1,U2,U3,V,W,X,Y,Y1,Y2,Y3,Y4,Z,AA,AB,AC review;
