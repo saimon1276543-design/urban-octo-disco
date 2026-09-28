@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/freeplane-learning/capstone.schema.json",
+  "title": "Capstone assignment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "capstone_id", "portfolio_id", "title", "goal", "capabilities", "deliverables", "rubric", "evidence_requirements", "scope_limits", "submission", "revision_rule", "review_policy"],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "capstone_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"},
+    "portfolio_id": {"type": "string"},
+    "title": {"type": "string", "minLength": 1},
+    "goal": {"type": "string", "minLength": 1},
+    "capabilities": {"type": "array", "items": {"$ref": "#/$defs/capability"}, "minItems": 1},
+    "deliverables": {"type": "array", "items": {"$ref": "#/$defs/deliverable"}, "minItems": 1},
+    "rubric": {"type": "array", "items": {"$ref": "#/$defs/rubric_item"}, "minItems": 1},
+    "evidence_requirements": {"type": "array", "items": {"$ref": "#/$defs/evidence_requirement"}, "minItems": 1},
+    "scope_limits": {"type": "array", "items": {"type": "string"}},
+    "submission": {"$ref": "#/$defs/submission_policy"},
+    "revision_rule": {"type": "string", "minLength": 1},
+    "review_policy": {"$ref": "#/$defs/review_policy"}
+  },
+  "$defs": {
+    "capability": {"type": "object", "additionalProperties": false, "required": ["capability_id", "description"], "properties": {"capability_id": {"type": "string"}, "description": {"type": "string"}}},
+    "deliverable": {"type": "object", "additionalProperties": false, "required": ["deliverable_id", "description", "accepted_types"], "properties": {"deliverable_id": {"type": "string"}, "description": {"type": "string"}, "accepted_types": {"type": "array", "items": {"type": "string"}}}},
+    "rubric_item": {"type": "object", "additionalProperties": false, "required": ["criterion_id", "description", "levels"], "properties": {"criterion_id": {"type": "string"}, "description": {"type": "string"}, "levels": {"type": "array", "items": {"type": "string"}, "minItems": 2}}},
+    "evidence_requirement": {"type": "object", "additionalProperties": false, "required": ["requirement_id", "description", "evidence_types"], "properties": {"requirement_id": {"type": "string"}, "description": {"type": "string"}, "evidence_types": {"type": "array", "items": {"type": "string"}}, "minimum_status": {"type": "string", "enum": ["submitted", "tool_checked", "llm_reviewed", "transfer_tested"]}}},
+    "submission_policy": {"type": "object", "additionalProperties": false, "required": ["relative_folder", "allowed_types", "requires_user_confirmation"], "properties": {"relative_folder": {"type": "string"}, "allowed_types": {"type": "array", "items": {"type": "string"}}, "requires_user_confirmation": {"type": "boolean"}}},
+    "review_policy": {"type": "object", "additionalProperties": false, "required": ["enabled", "default_review_days", "similar_task_allowed"], "properties": {"enabled": {"type": "boolean"}, "default_review_days": {"type": "integer", "minimum": 0}, "similar_task_allowed": {"type": "boolean"}, "available_time_source": {"type": "string", "enum": ["manual", "time_tracker", "both"]}}}
+  }
+}

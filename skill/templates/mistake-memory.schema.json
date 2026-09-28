@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/freeplane-learning/mistake-memory.schema.json",
+  "title": "Mistake memory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "memory_id", "portfolio_id", "description", "first_observed_at", "observation_count", "status", "review_policy"],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "memory_id": {"type": "string"},
+    "portfolio_id": {"type": "string"},
+    "capability_id": {"type": ["string", "null"]},
+    "description": {"type": "string", "minLength": 1},
+    "original_context": {"type": "string"},
+    "correction": {"type": "string"},
+    "supporting_finding_ids": {"type": "array", "items": {"type": "string"}},
+    "first_observed_at": {"type": "string", "format": "date-time"},
+    "last_observed_at": {"type": "string", "format": "date-time"},
+    "observation_count": {"type": "integer", "minimum": 1},
+    "status": {"type": "string", "enum": ["open", "improving", "resolved", "stale", "unknown"]},
+    "review_policy": {"$ref": "#/$defs/review_policy"},
+    "next_review_at": {"type": ["string", "null"], "format": "date-time"},
+    "roadmap_node_id": {"type": ["string", "null"]}
+  },
+  "$defs": {"review_policy": {"type": "object", "additionalProperties": false, "required": ["interval_days", "task_type", "similar_task_allowed"], "properties": {"interval_days": {"type": "integer", "minimum": 0}, "task_type": {"type": "string", "enum": ["recall", "explanation", "mini_task", "error_correction", "transfer", "similar_capstone"]}, "similar_task_allowed": {"type": "boolean"}}}}
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/freeplane-learning/permission-policy.schema.json",
+  "title": "Local bridge permission policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "workspace_root", "authorized_roots", "read", "write", "execution", "network", "secrets", "confirmation"],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "workspace_root": {"type": "string", "minLength": 1},
+    "authorized_roots": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+    "read": {"type": "object", "additionalProperties": false, "required": ["submission_files", "workspace_records", "freeplane_maps"], "properties": {"submission_files": {"type": "boolean"}, "workspace_records": {"type": "boolean"}, "freeplane_maps": {"type": "boolean"}}},
+    "write": {"type": "object", "additionalProperties": false, "required": ["draft_evaluations", "official_records", "freeplane_maps"], "properties": {"draft_evaluations": {"type": "boolean"}, "official_records": {"type": "boolean"}, "freeplane_maps": {"type": "boolean"}}},
+    "execution": {"type": "object", "additionalProperties": false, "required": ["enabled", "allowlisted_commands", "network_disabled", "max_seconds"], "properties": {"enabled": {"type": "boolean"}, "allowlisted_commands": {"type": "array", "items": {"type": "string"}}, "network_disabled": {"type": "boolean"}, "max_seconds": {"type": "integer", "minimum": 1}}},
+    "network": {"type": "object", "additionalProperties": false, "required": ["enabled", "approved_hosts"], "properties": {"enabled": {"type": "boolean"}, "approved_hosts": {"type": "array", "items": {"type": "string"}}}},
+    "secrets": {"type": "object", "additionalProperties": false, "required": ["allow_project_secrets", "credential_store_only"], "properties": {"allow_project_secrets": {"type": "boolean"}, "credential_store_only": {"type": "boolean"}}},
+    "confirmation": {"type": "object", "additionalProperties": false, "required": ["save_official_records", "update_freeplane", "run_project_code"], "properties": {"save_official_records": {"type": "boolean"}, "update_freeplane": {"type": "boolean"}, "run_project_code": {"type": "boolean"}}}
+  }
+}

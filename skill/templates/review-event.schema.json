@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/freeplane-learning/review-event.schema.json",
+  "title": "Learning review event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "review_id", "target_type", "target_id", "reason", "task_type", "task", "estimated_task_minutes", "status", "roadmap_insertion"],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "review_id": {"type": "string"},
+    "target_type": {"type": "string", "enum": ["capability", "mistake_memory", "capstone", "evaluation_finding"]},
+    "target_id": {"type": "string"},
+    "reason": {"type": "string"},
+    "task_type": {"type": "string", "enum": ["recall", "explanation", "mini_task", "error_correction", "transfer", "similar_capstone"]},
+    "task": {"type": "string", "minLength": 1},
+    "estimated_task_minutes": {"type": "integer", "minimum": 1},
+    "available_now_minutes": {"type": ["integer", "null"], "minimum": 0},
+    "available_week_minutes": {"type": ["integer", "null"], "minimum": 0},
+    "time_source": {"type": "string", "enum": ["manual", "time_tracker", "default_estimate"]},
+    "due_at": {"type": ["string", "null"], "format": "date-time"},
+    "status": {"type": "string", "enum": ["queued", "inserted", "completed", "skipped", "expired"]},
+    "roadmap_insertion": {"$ref": "#/$defs/insertion"},
+    "result_submission_id": {"type": ["string", "null"]}
+  },
+  "$defs": {"insertion": {"type": "object", "additionalProperties": false, "required": ["mode", "node_id", "proposal_status"], "properties": {"mode": {"type": "string", "enum": ["review_queue", "beside_capability", "before_dependent", "progress_view"]}, "node_id": {"type": ["string", "null"]}, "proposal_status": {"type": "string", "enum": ["pending", "approved", "rejected", "applied"]}}}}
+}

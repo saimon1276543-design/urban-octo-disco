@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/freeplane-learning/submission-manifest.schema.json",
+  "title": "Capstone submission manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "submission_id", "capstone_id", "attempt", "authorized_root", "files", "learner_statement"],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "submission_id": {"type": "string"},
+    "capstone_id": {"type": "string"},
+    "attempt": {"type": "integer", "minimum": 1},
+    "authorized_root": {"type": "string", "minLength": 1},
+    "submitted_at": {"type": "string", "format": "date-time"},
+    "parent_submission_id": {"type": ["string", "null"]},
+    "learner_statement": {"type": "string"},
+    "files": {"type": "array", "items": {"$ref": "#/$defs/file"}},
+    "included_requirement_ids": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "file": {"type": "object", "additionalProperties": false, "required": ["relative_path", "sha256", "size_bytes", "kind", "included"], "properties": {"relative_path": {"type": "string", "pattern": "^(?!/).*$"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "size_bytes": {"type": "integer", "minimum": 0}, "modified_at": {"type": "string", "format": "date-time"}, "kind": {"type": "string", "enum": ["code", "document", "freeplane_map", "image", "video", "audio", "test_output", "data", "other"]}, "included": {"type": "boolean"}, "exclusion_reason": {"type": ["string", "null"]}, "extracted_ref": {"type": ["string", "null"]}}}
+  }
+}

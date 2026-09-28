@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/freeplane-learning/evaluation-result.schema.json",
+  "title": "Structured capstone evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "evaluation_id", "submission_id", "status", "evidence", "findings", "next_action", "uncertainties"],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "evaluation_id": {"type": "string"},
+    "submission_id": {"type": "string"},
+    "status": {"type": "string", "enum": ["pass", "needs_revision", "incomplete", "blocked", "not_evaluable"]},
+    "evaluator": {"$ref": "#/$defs/evaluator"},
+    "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}},
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}},
+    "next_action": {"type": "string", "minLength": 1},
+    "uncertainties": {"type": "array", "items": {"type": "string"}},
+    "learner_summary": {"type": "string"}
+  },
+  "$defs": {
+    "evaluator": {"type": "object", "additionalProperties": false, "required": ["mode", "version"], "properties": {"mode": {"type": "string", "enum": ["deterministic", "single_llm", "parallel_llm", "hybrid"]}, "version": {"type": "string"}, "provider": {"type": ["string", "null"]}, "model": {"type": ["string", "null"]}}},
+    "evidence": {"type": "object", "additionalProperties": false, "required": ["requirement_id", "status", "source_refs", "confidence"], "properties": {"requirement_id": {"type": "string"}, "status": {"type": "string", "enum": ["unknown", "self_reported", "submitted", "tool_checked", "llm_reviewed", "transfer_tested", "retention_checked"]}, "source_refs": {"type": "array", "items": {"type": "string"}}, "confidence": {"type": "string", "enum": ["low", "medium", "high"]}, "note": {"type": "string"}}},
+    "finding": {"type": "object", "additionalProperties": false, "required": ["finding_id", "category", "severity", "description", "source_refs", "confidence", "needs_future_review"], "properties": {"finding_id": {"type": "string"}, "category": {"type": "string", "enum": ["strength", "error", "missing_evidence", "risk", "question", "recommendation"]}, "severity": {"type": "string", "enum": ["info", "low", "medium", "high", "critical"]}, "description": {"type": "string"}, "source_refs": {"type": "array", "items": {"type": "string"}}, "confidence": {"type": "string", "enum": ["low", "medium", "high"]}, "needs_future_review": {"type": "boolean"}, "capability_id": {"type": ["string", "null"]}}}
+  }
+}

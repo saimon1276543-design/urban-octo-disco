@@ -213,3 +213,39 @@ skill/references/plan-quality-check.md
 ```
 
 The skill’s main file explicitly routes beginner and Freeplane questions to these references. The repository includes a regression test so the main skill remains below the host’s 500-line progressive-disclosure limit and continues to point to the required references.
+
+
+## Phase 0 capstone foundation
+
+The repository now contains the first contracts for the future capstone workflow. These are definitions and safety rules; they do not yet run an autonomous swarm or change Freeplane automatically.
+
+The planned flow is:
+
+```text
+learning-path-architect creates the assignment
+        ↓
+you place the project in an authorized folder
+        ↓
+the bridge records files and hashes
+        ↓
+later evaluators inspect bounded evidence units
+        ↓
+results, mistakes, and future reviews are saved
+        ↓
+Freeplane shows a concise, reversible progress update
+```
+
+Phase 0 defines six records:
+
+```text
+skill/templates/capstone.schema.json
+skill/templates/submission-manifest.schema.json
+skill/templates/evaluation-result.schema.json
+skill/templates/mistake-memory.schema.json
+skill/templates/review-event.schema.json
+skill/templates/permission-policy.schema.json
+```
+
+The permission policy is intentionally conservative. “Full project access” means access to the project folder that you explicitly authorize, not unrestricted access to the entire computer. Official records and Freeplane updates are designed to require confirmation in the first versions.
+
+A recurring mistake can later create a small linked review item in the roadmap. The original capability node and history remain intact. Available time will initially be entered manually; a future time-tracker adapter can provide observed capacity without replacing the learning database.
