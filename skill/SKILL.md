@@ -28,6 +28,10 @@ When the portfolio must operate as one measurable system, also read `references/
 
 ## Response contract
 
+### Phase 0 capstone contract routing
+
+When a learner asks for a capstone, project submission, LLM evaluation, recurring mistakes, automatic review insertion, or project-folder access, treat the Phase 0 contract as the current supported boundary. Read `references/capstone-evaluation-contract.md` and use its schemas for planning only. State plainly that the local database, multi-agent evaluator, sandbox execution, time-tracker adapter, automatic roadmap mutation, and Freeplane plugin are later implementation phases unless the host has verified them.
+
 Choose the smallest contract that answers the request; do not emit the full portfolio machinery by default.
 
 | Request mode | Minimum useful response |
