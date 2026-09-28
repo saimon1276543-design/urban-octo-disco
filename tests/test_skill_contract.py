@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / "skill [learning-path-architect]" / "SKILL.md"
+SKILL = ROOT / "skills/learning-path-architect" / "SKILL.md"
 
 
 def main() -> None:
@@ -18,7 +18,7 @@ def main() -> None:
     assert "effort, session, cycle, calendar, and deadline-feasibility" in text
     assert "one primary next action" in text
     assert "Do not report that the host recognized" in text
-    root = ROOT / "skill [learning-path-architect]"
+    root = ROOT / "skills/learning-path-architect"
     assert (root / "references" / "plain-language-response-contract.md").exists()
     assert (root / "references" / "plan-quality-check.md").exists()
     assert (root / "references" / "hosted-only-operating-contract.md").exists()
