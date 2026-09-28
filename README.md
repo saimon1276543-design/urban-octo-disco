@@ -18,6 +18,14 @@ The helper can update the Freeplane map
 
 Freeplane is still the mind-map application. This project is only the connecting helper.
 
+## Current status: working foundation
+
+This repository is a **working foundation**, not the completed offline learning platform. The current foundation provides the basic connection between Freeplane maps, saved learning records, backups, revisions, conflicts, and the local connection point. It is useful for testing and extending the workflow, but several larger capabilities are still future work.
+
+The complete future system is intended to add a local evidence database, project-submission intake, deterministic project checks, bounded LLM evaluation, mistake memory, spaced review, parallel evaluation agents, automatic roadmap proposals, a Freeplane add-on, a dockable side panel, and optional time tracking. These capabilities should not be considered available merely because they are described in the repository or in `OFFLINE_IMPLEMENTATION_TODO.md`.
+
+Use this README as the guide for what the current repository can do. Use [`OFFLINE_IMPLEMENTATION_TODO.md`](OFFLINE_IMPLEMENTATION_TODO.md) as the detailed engineering checklist for what must be built and verified later.
+
 ## What is already included
 
 - Freeplane map reading and writing.
