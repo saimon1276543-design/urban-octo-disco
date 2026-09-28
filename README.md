@@ -277,3 +277,8 @@ New portable templates are available under `skill/templates/` for hosted capston
 ## Diagnostic-first improvement
 
 The skill now diagnoses before expanding a learning route. When a learner is stuck, late, or submits weak evidence, it should use a small representative pilot to distinguish a prerequisite gap, practice gap, feedback problem, scope problem, time-estimation error, transfer problem, or retention problem. It then chooses the smallest intervention and preserves the reason for any route change in a portable decision record.
+
+
+## Network API interception encyclopedia
+
+The skill now includes a dedicated reference for authorized network-API interception in scraping and browser debugging. It consolidates request discovery, XHR/fetch, GraphQL, WebSocket, SSE, service workers, CDP Fetch, Playwright routing, Puppeteer interception, Selenium/CDP limits, HAR/fixture replay, provenance, redaction, rate limits, and authorization boundaries.

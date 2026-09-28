@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0",
   "skill_name": "learning-path-architect",
-  "release_id": "20260928-diagnostic-first",
+  "release_id": "20260928-network-api-interception",
   "artifact": {
-    "file_count": 197,
-    "total_bytes": 689155,
-    "package_sha256": "e875f8bf78f009974b6f6bb7b39c874260ad49609ddc111870a0f8b37216d23c",
+    "file_count": 198,
+    "total_bytes": 697172,
+    "package_sha256": "ad48727bd2a926b90aef96c5012406e1deac4d5e9cb8bee8a6d9bdd636aa0f54",
     "zip_path": "/home/ubuntu/urban-octo-disco/dist/learning-path-architect-with-freeplane-bridge.zip"
   },
   "workspace": {
-    "skill_sha256": "92d05f71385d98de65628daafd5beaf7473a7bd1f3707c27cef0ca021d398892",
+    "skill_sha256": "ec36177673c0d66d5cbcf269194e7f27331e884ee795c3f0ea0c5ecd89f4a534",
     "manifest_sha256": "5b4075af5aec5b27367153f0a451e1a34ffcbe4e01b9e17639d259347062dac8",
     "capability_markers": [
       "README.md",
