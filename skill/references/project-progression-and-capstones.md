@@ -24,3 +24,12 @@ Each project states primary and supporting domains, target capability/level, pre
 - OSINT acquisition → provenance/entity resolution → evidence graph → Graph RAG.
 
 Projects are evidence containers, not proof of every connected skill. A BCI project does not establish clinical competence; a crawler does not establish authorization; an agent demo does not establish safe autonomy; a deployment does not prove production readiness without operational evidence.
+
+
+## Hosted submission boundary
+
+When the capstone is assigned in a hosted session, state exactly what the learner should submit in the next session and what the skill will inspect. A project-folder path on the learner’s computer is not evidence unless the learner uploads the relevant material or a verified local adapter is connected.
+
+Use explicit evidence labels: `unknown`, `self_reported`, `submitted`, `reviewed`, `tool_checked`, `transfer_tested`, and `retention_checked`. Preserve the original assignment and earlier evaluation when requesting a revision. A capstone can demonstrate selected capabilities without proving every connected skill, professional authorization, or long-term retention.
+
+For large submissions, use bounded evidence groups and report which files were actually examined. Do not claim complete inspection because a summary or retrieval step was used.

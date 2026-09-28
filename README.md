@@ -249,3 +249,12 @@ skill/templates/permission-policy.schema.json
 The permission policy is intentionally conservative. “Full project access” means access to the project folder that you explicitly authorize, not unrestricted access to the entire computer. Official records and Freeplane updates are designed to require confirmation in the first versions.
 
 A recurring mistake can later create a small linked review item in the roadmap. The original capability node and history remain intact. Available time will initially be entered manually; a future time-tracker adapter can provide observed capacity without replacing the learning database.
+
+
+## Hosted-only improvements
+
+The skill now has a clear hosted-session boundary. It can design assignments, inspect material supplied in the current session, create portable records, and propose roadmap updates. It does not pretend to watch offline work, access arbitrary local folders, send background reminders, control a running Freeplane application, or maintain a permanent database without a verified integration.
+
+Time estimates now separate focused effort, practical session length, full learning cycle, calendar range, and deadline feasibility. Non-trivial estimates use low/typical/high ranges, explicit capacity assumptions, uncertainty, recovery reserve, and a calibration task. A time estimate is a planning range, not a promise of mastery.
+
+New portable templates are available under `skill/templates/` for hosted capstones, time plans, and progress views.

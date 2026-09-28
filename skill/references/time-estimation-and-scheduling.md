@@ -127,3 +127,31 @@ Every time-sensitive output should state:
 - what would make the estimate invalid.
 
 If the learner has not supplied enough information, provide a conditional estimate with explicit assumptions rather than inventing a precise date. A time estimate answers “what planning range is plausible under these conditions,” not “when mastery is guaranteed.”
+
+
+## 10. Deadline feasibility and hosted output
+
+When a deadline is supplied, classify it as **comfortable**, **tight**, **aggressive**, or **not credible under the stated constraints**. If it is not credible, do not hide the problem inside a packed schedule. Offer explicit choices: reduce scope, lower the target level, increase reliable capacity, add support, or move the deadline.
+
+For hosted-only planning, report the following layers separately:
+
+1. Focused effort.
+2. Practical session length.
+3. Full learning cycle including feedback and review.
+4. Calendar range under stated availability.
+5. Deadline feasibility.
+
+Every non-trivial estimate should include low, typical, and high values; estimate basis; confidence; the dominant uncertainty; setup and recovery reserve; and a first representative task for calibration. If the learner has not supplied capacity, use an explicit assumption rather than an invented personal schedule.
+
+A useful output is:
+
+```text
+Focused effort: 8–14 hours.
+Practical sessions: 45–60 minutes.
+Full cycle: 2–4 weeks including practice and review.
+Calendar range: 3–6 weeks at 4 reliable hours/week.
+Deadline feasibility: tight, because current debugging ability is unknown.
+Calibration: complete the first representative task, then compare planned versus actual time.
+```
+
+Do not call a plan “on time” merely because its reading list fits. The estimate must include practice, feedback, debugging, evidence, transfer, and recovery when those are part of the intended outcome.
