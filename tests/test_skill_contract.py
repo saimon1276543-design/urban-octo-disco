@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / "skill" / "SKILL.md"
+SKILL = ROOT / "skill [learning-path-architect]" / "SKILL.md"
 
 
 def main() -> None:
@@ -18,15 +18,16 @@ def main() -> None:
     assert "effort, session, cycle, calendar, and deadline-feasibility" in text
     assert "one primary next action" in text
     assert "Do not report that the host recognized" in text
-    assert (ROOT / "skill" / "references" / "plain-language-response-contract.md").exists()
-    assert (ROOT / "skill" / "references" / "plan-quality-check.md").exists()
-    assert (ROOT / "skill" / "references" / "hosted-only-operating-contract.md").exists()
-    assert (ROOT / "skill" / "templates" / "hosted-capstone.md").exists()
-    assert (ROOT / "skill" / "templates" / "hosted-time-plan.md").exists()
-    assert (ROOT / "skill" / "templates" / "hosted-progress-view.md").exists()
-    assert (ROOT / "skill" / "references" / "diagnostic-first-learning-loop.md").exists()
-    assert (ROOT / "skill" / "references" / "network-api-interception-for-scraping.md").exists()
-    assert (ROOT / "skill" / "templates" / "decision-record.md").exists()
+    root = ROOT / "skill [learning-path-architect]"
+    assert (root / "references" / "plain-language-response-contract.md").exists()
+    assert (root / "references" / "plan-quality-check.md").exists()
+    assert (root / "references" / "hosted-only-operating-contract.md").exists()
+    assert (root / "templates" / "hosted-capstone.md").exists()
+    assert (root / "templates" / "hosted-time-plan.md").exists()
+    assert (root / "templates" / "hosted-progress-view.md").exists()
+    assert (root / "references" / "diagnostic-first-learning-loop.md").exists()
+    assert (root / "references" / "network-api-interception-for-scraping.md").exists()
+    assert (root / "templates" / "decision-record.md").exists()
     print("skill contract smoke test passed")
 
 

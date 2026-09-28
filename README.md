@@ -185,10 +185,10 @@ When you move to your own computer, download the complete workspace ZIP and keep
 
 ## Skill package
 
-The `skill/` folder contains the learning-path-architect skill. Its main file is:
+The `skill [learning-path-architect]/` folder contains the learning-path-architect skill. Its main file is:
 
 ```text
-skill/SKILL.md
+skill [learning-path-architect]/SKILL.md
 ```
 
 The host’s Add/Update card is generated only when the active skill is delivered from its recognized skill path. A GitHub repository or ZIP file is a backup and transport method; it is not automatic installation.
@@ -222,8 +222,8 @@ It also now has a final quality check for coverage, prerequisites, evidence, ada
 The new guidance is stored in:
 
 ```text
-skill/references/plain-language-response-contract.md
-skill/references/plan-quality-check.md
+skill [learning-path-architect]/references/plain-language-response-contract.md
+skill [learning-path-architect]/references/plan-quality-check.md
 ```
 
 The skill’s main file explicitly routes beginner and Freeplane questions to these references. The repository includes a regression test so the main skill remains below the host’s 500-line progressive-disclosure limit and continues to point to the required references.
@@ -252,12 +252,12 @@ Freeplane shows a concise, reversible progress update
 Phase 0 defines six records:
 
 ```text
-skill/templates/capstone.schema.json
-skill/templates/submission-manifest.schema.json
-skill/templates/evaluation-result.schema.json
-skill/templates/mistake-memory.schema.json
-skill/templates/review-event.schema.json
-skill/templates/permission-policy.schema.json
+skill [learning-path-architect]/templates/capstone.schema.json
+skill [learning-path-architect]/templates/submission-manifest.schema.json
+skill [learning-path-architect]/templates/evaluation-result.schema.json
+skill [learning-path-architect]/templates/mistake-memory.schema.json
+skill [learning-path-architect]/templates/review-event.schema.json
+skill [learning-path-architect]/templates/permission-policy.schema.json
 ```
 
 The permission policy is intentionally conservative. “Full project access” means access to the project folder that you explicitly authorize, not unrestricted access to the entire computer. Official records and Freeplane updates are designed to require confirmation in the first versions.
@@ -271,7 +271,7 @@ The skill now has a clear hosted-session boundary. It can design assignments, in
 
 Time estimates now separate focused effort, practical session length, full learning cycle, calendar range, and deadline feasibility. Non-trivial estimates use low/typical/high ranges, explicit capacity assumptions, uncertainty, recovery reserve, and a calibration task. A time estimate is a planning range, not a promise of mastery.
 
-New portable templates are available under `skill/templates/` for hosted capstones, time plans, and progress views.
+New portable templates are available under `skill [learning-path-architect]/templates/` for hosted capstones, time plans, and progress views.
 
 
 ## Diagnostic-first improvement

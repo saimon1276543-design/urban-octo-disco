@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TEMPLATES = ROOT / "skill" / "templates"
+TEMPLATES = ROOT / "skill [learning-path-architect]" / "templates"
 
 SCHEMA_NAMES = [
     "capstone.schema.json",
